@@ -26,3 +26,7 @@ $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
 @import "confirm_box";
 @import "inner-pages";
 @import "homepage";
+
+label{
+  font-weight: bold;
+}
