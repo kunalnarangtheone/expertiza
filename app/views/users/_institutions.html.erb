@@ -12,7 +12,7 @@ $(document).ready(function(){
 });
 </script>
 <tr>
-  <td><label for="user_institutions">Institution: </label></td>
+  <td><label for="user_institutions" class="label_account_request">Institution: </label></td>
   <td><%= collection_select('user',:institution_id, Institution.all.order(:name), :id, :name, {include_blank: 'Other', selected: 1}, :class => "form-control width-250") %></td>
 </tr>
 <tr>
