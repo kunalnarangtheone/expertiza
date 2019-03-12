@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def list_pending_requested
-    @requested_users = AccountRequest.all
+    @requested_users = RequestedUser.all
     @roles = Role.all
   end
 
@@ -108,7 +108,8 @@ class UsersController < ApplicationController
   def request_new
     flash[:warn] = "If you are a student, please contact your teaching staff to get your Expertiza ID."
     @user = User.new
-    @rolename = Role.find_by(name: params[:role])
+    @role = Role.new
+    @rolename = Role.find_by(name: "Instructor")
     roles_for_request_sign_up
   end
 
@@ -142,7 +143,7 @@ class UsersController < ApplicationController
   end
 
   def create_requested_user_record
-    requested_user = AccountRequest.new(requested_user_params)
+    requested_user = RequestedUser.new(requested_user_params)
     if params[:user][:institution_id].empty?
       institution = Institution.find_or_create_by(name: params[:institution][:name])
       requested_user.institution_id = institution.id
@@ -171,7 +172,7 @@ class UsersController < ApplicationController
   end
 
   def create_approved_user
-    requested_user = AccountRequest.find_by(id: params[:id])
+    requested_user = RequestedUser.find_by(id: params[:id])
     requested_user.status = params[:status]
     if requested_user.status.nil?
       flash[:error] = "Please Approve or Reject before submitting"
