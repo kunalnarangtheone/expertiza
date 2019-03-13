@@ -1,0 +1,31 @@
+= form_for @account_request do |f|
+  - if @account_request.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@account_request.errors.count, "error")} prohibited this account_request from being saved:"
+      %ul
+        - @account_request.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :role_id
+    = f.number_field :role_id
+  .field
+    = f.label :fullname
+    = f.text_field :fullname
+  .field
+    = f.label :institution_id
+    = f.text_field :institution_id
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :status
+    = f.text_field :status
+  .field
+    = f.label :self_introduction
+    = f.text_area :self_introduction
+  .actions
+    = f.submit 'Save'

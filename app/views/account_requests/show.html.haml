@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @account_request.name
+%p
+  %b Role:
+  = @account_request.role_id
+%p
+  %b Fullname:
+  = @account_request.fullname
+%p
+  %b Institution:
+  = @account_request.institution_id
+%p
+  %b Email:
+  = @account_request.email
+%p
+  %b Status:
+  = @account_request.status
+%p
+  %b Self introduction:
+  = @account_request.self_introduction
+
+= link_to 'Edit', edit_account_request_path(@account_request)
+\|
+= link_to 'Back', account_requests_path

@@ -1,0 +1,33 @@
+%h1 Listing account_requests
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Role
+      %th Fullname
+      %th Institution
+      %th Email
+      %th Status
+      %th Self introduction
+      %th
+      %th
+      %th
+
+  %tbody
+    - @account_requests.each do |account_request|
+      %tr
+        %td= account_request.name
+        %td= account_request.role_id
+        %td= account_request.fullname
+        %td= account_request.institution_id
+        %td= account_request.email
+        %td= account_request.status
+        %td= account_request.self_introduction
+        %td= link_to 'Show', account_request
+        %td= link_to 'Edit', edit_account_request_path(account_request)
+        %td= link_to 'Destroy', account_request, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Account request', new_account_request_path
